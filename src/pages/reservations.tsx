@@ -1,6 +1,33 @@
 import styles from "@/styles/Reservations.module.css";
+import { gql, useQuery } from '@apollo/client';
+
+const GET_CALENDERS = gql`
+    query GetCalendars {
+        calendars(where: {state_in: Open, customers_some: { id: "cm0b8kilabkyu0783rc2uuzax"} }, orderBy: from_DESC) {
+            id
+            shop {
+                name
+                address {
+                    street
+                    city
+                }
+                phone
+            }
+            subject {
+                alias
+            }
+            from
+            to
+        }
+    }
+`;
+
 
 export default function MyReservations() {
+  const { data, loading, error } = useQuery(GET_CALENDERS);
+  console.log('data', data)
+  console.log('loading', loading)
+  console.log('error', error)
   return (
     <div className={styles.page}>
       <header>
