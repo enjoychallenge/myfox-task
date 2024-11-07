@@ -40,3 +40,9 @@ a {
     color-scheme: dark;
   }
 }
+
+:root {
+  --gray-text: #555555;
+  --black-text: #000000;
+  --header-border-size: 4px;
+}
